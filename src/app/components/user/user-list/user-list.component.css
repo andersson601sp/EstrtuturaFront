@@ -1,0 +1,40 @@
+table {
+  width: 100%;
+}
+
+.mat-column-productId {
+  flex: 0 0 10%;
+}
+.mat-column-productName {
+  flex: 0 0 50%;
+}
+
+
+.edit {
+  margin-right: 10px;
+}
+
+.edit > i {
+  color: #d9cd26;
+}
+
+.delete > i {
+  color: #e35e6b;
+}
+
+
+.button-x {
+  background-color: #e47b25;
+  color: #fff;
+}
+
+
+.search {
+  width: 50%!important;
+}
+
+.ic {
+  margin-left: -18px;
+    position: fixed;
+    margin-top: 12px;
+}

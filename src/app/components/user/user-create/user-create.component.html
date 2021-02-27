@@ -1,0 +1,60 @@
+<mat-card class="w-50" >
+  <mat-card-title>Novo Usuário</mat-card-title>
+  <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Login</mat-label>
+      <input
+        matInput
+        placeholder="Login"
+        [(ngModel)]="user.username"
+        name="username"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Senha</mat-label>
+      <input
+        matInput
+        placeholder="Senha"
+        [(ngModel)]="user.password"
+        name="password"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input
+        matInput
+        placeholder="Nome"
+        [(ngModel)]="user.firstName"
+        name="firstName"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>SobreNome</mat-label>
+      <input
+        matInput
+        placeholder="SobreNome"
+        [(ngModel)]="user.lastName"
+        name="lastName"
+        required
+      />
+    </mat-form-field>
+
+    <h4>Perfil Usuário</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Perfil</mat-label>
+      <mat-select [(ngModel)]="selectedValueRole" name="role" required>
+        <mat-option *ngFor="let role of roles" [value]="role.value">
+          {{ role.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <button mat-raised-button (click)="createUser()" color="primary">
+    Salvar
+  </button>
+
+  <button mat-raised-button (click)="cancel()">Cancelar</button>
+</mat-card>

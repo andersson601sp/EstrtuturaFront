@@ -1,0 +1,15 @@
+<mat-card class="w-50">
+  <mat-card-title>Exclusão Usuário</mat-card-title>
+  <form>
+  <hr>
+    <mat-label>Confirma a exclusão para usuário {{user.lastName}}?</mat-label>
+  </form>
+    <hr>
+  <button mat-raised-button (click)="confirmaexclusao()" color="primary">
+      Excluir
+  </button>
+
+  <button mat-raised-button (click)="cancel()">
+      Cancelar
+  </button>
+</mat-card>
