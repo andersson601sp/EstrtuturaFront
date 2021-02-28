@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
 import { User } from '../models';
@@ -10,12 +10,6 @@ import { PaginatedResult } from '../models/Pagination';
 @Injectable({ providedIn: 'root' })
 export class UserService {
   [x: string]: any;
-
-   headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    // tslint:disable-next-line: object-literal-key-quotes
-    'Authorization': `Bearer ${JSON.parse(localStorage.getItem('user')).token}`
-   });
 
     constructor(private http: HttpClient) { }
 
@@ -30,7 +24,7 @@ export class UserService {
         params = params.append('filtro', filtro);
       }
 
-      return this.http.get<User[]>(`${environment.apiUrl}/users`, { observe: 'response', params, headers: this.headers  })
+      return this.http.get<User[]>(`${environment.apiUrl}/users`, { observe: 'response', params })
       .pipe(
         map(response => {
           paginatedResult.result = response.body;
@@ -43,14 +37,12 @@ export class UserService {
     }
 
     getById(id: number): Observable<User> {
-        return this.http.get<User>(`${environment.apiUrl}/users/${id}`,  { headers: this.headers });
+        return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
     }
 
     create(user: any): any {
       console.log(JSON.stringify(user));
-      return this.http.post<User>(`${environment.apiUrl}/users`, JSON.stringify(user), {
-        headers: this.headers
-      })
+      return this.http.post<User>(`${environment.apiUrl}/users`, JSON.stringify(user))
       .pipe(
         map((obj) => obj),
         catchError((e) => this.errorHandler(e))
@@ -59,9 +51,7 @@ export class UserService {
 
      update(user: any): any {
       console.log(JSON.stringify(user));
-      return this.http.put<User>(`${environment.apiUrl}/users/${user.id}`, JSON.stringify(user), {
-        headers: this.headers
-      })
+      return this.http.put<User>(`${environment.apiUrl}/users/${user.id}`, JSON.stringify(user))
       .pipe(
         map((obj) => obj),
         catchError((e) => this.errorHandler(e))
@@ -69,6 +59,6 @@ export class UserService {
     }
 
      delete(id: number): any {
-      return this.http.delete<User>(`${environment.apiUrl}/users/${id}`,  { headers: this.headers });
+      return this.http.delete<User>(`${environment.apiUrl}/users/${id}`);
   }
 }

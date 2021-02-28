@@ -21,13 +21,6 @@ export class HomeComponent implements OnInit {
     console.log(this.user);
   }
 
-  ngOnInit(): void {
-      this.loading = true;
-      this.userService.getById(this.user.id).pipe(first()).subscribe(user => {
-      this.loading = false;
-      this.userFromApi = user;
-      console.log('iniciou home');
-    });
-  }
+  ngOnInit(): void {  }
 
 }
