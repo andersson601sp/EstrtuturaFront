@@ -20,3 +20,10 @@
 .header .title-group i{
     padding-right: 5px;
 }
+
+.my-toobar {
+  color: #3f51b5;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+}

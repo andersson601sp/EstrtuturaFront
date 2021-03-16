@@ -34,11 +34,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import {MatSelectModule} from '@angular/material/select';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatSelectModule} from '@angular/material/select';
+import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 registerLocaleData(localePt);
 
@@ -78,7 +80,15 @@ registerLocaleData(localePt);
     MatSortModule,
     MatSelectModule,
 
+    NgxSpinnerModule,
     PaginationModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 3500,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+      progressBar: true,
+      closeButton: true
+    }),
   ],
   providers: [
   {  provide: LOCALE_ID,  useValue: 'pt-BR' },

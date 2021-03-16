@@ -35,6 +35,6 @@ table {
 
 .ic {
   margin-left: -18px;
-    position: fixed;
+    position: relative;
     margin-top: 12px;
 }

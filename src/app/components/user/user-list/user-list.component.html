@@ -1,15 +1,18 @@
+<div class="view-page">
   <mat-form-field appearance="legacy">
       <mat-label>Pesquisar...</mat-label>
-      <input matInput placeholder="" class="search" value="Sushi" [(ngModel)]="filtro" name="filtro">
+      <input matInput placeholder="" class="search" value="Sushi" [(ngModel)]="filtro" (ngModelChange)="filterUser()" name="filtro">
   </mat-form-field>
   <span class="material-icons ic">
     search
     </span>
   &nbsp;&nbsp;
-<button mat-button (click)="read()" class="button-x">Pesquisar
+<button mat-button [disabled]="loading" (click)="read()" class="button-x">
+  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+  Pesquisar
 </button>
 
-<table class="table table-hover">
+<table class="table table-hover" style="height: 310px;">
   <thead class="thead-light">
     <tr>
       <th scope="col">#</th>
@@ -58,5 +61,4 @@
   </pagination>
 
 </div>
-
-
+</div>

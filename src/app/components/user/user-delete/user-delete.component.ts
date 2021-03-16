@@ -68,8 +68,8 @@ export class UserDeleteComponent implements OnInit {
       .pipe(takeUntil(this.unsubscriber))
       .subscribe(() => {
         },
-        () => {
-          this.error = 'Erro ao tentar excluir usuário';
+        (error) => {
+          this.error = error;
           this.loading = false;
         }
       );

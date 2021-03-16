@@ -1,23 +1,25 @@
-<mat-card class="w-50">
-  <mat-card-title>Novo Usuário</mat-card-title>
+<div class="view-page">
+<mat-card class="w-50 my-card">
+  <mat-card-title>Editar Usuário</mat-card-title>
   <form>
       <mat-form-field  appearance="fill">
         <mat-label>Login</mat-label>
-        <input matInput placeholder="Login" [(ngModel)]="user.username" name="username" required>
+        <input matInput placeholder="Login" [disabled]="loading"
+          [(ngModel)]="user.username" name="username" required>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Senha</mat-label>
-        <input matInput placeholder="Senha"
+        <input matInput placeholder="Senha" [disabled]="loading"
             [(ngModel)]="user.password" name="password" required>
       </mat-form-field>
       <mat-form-field>
       <mat-label>Nome</mat-label>
-      <input matInput placeholder="Nome"
+      <input matInput placeholder="Nome" [disabled]="loading"
           [(ngModel)]="user.firstName" name="firstName" required>
       </mat-form-field>
       <mat-form-field>
     <mat-label>SobreNome</mat-label>
-    <input matInput placeholder="SobreNome"
+    <input matInput placeholder="SobreNome" [disabled]="loading"
         [(ngModel)]="user.lastName" name="lastName" required>
       </mat-form-field>
 
@@ -32,11 +34,13 @@
   </mat-form-field>
 
   </form>
-  <button mat-raised-button (click)="editUser()" color="primary">
+  <button mat-raised-button [disabled]="loading" (click)="editUser()" color="primary">
+    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
       Salvar
   </button>
 
-  <button mat-raised-button (click)="cancel()">
+  <button mat-raised-button [disabled]="loading"  (click)="cancel()">
       Cancelar
   </button>
 </mat-card>
+</div>
